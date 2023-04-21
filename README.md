@@ -67,6 +67,7 @@ Verificar histórico de atendimentos|	João        |
 
 
 #Diagrama de classes:
+
 +------------------+            +-------------+       +---------+         +--------------+
 |   Agendamento    |            |   Cliente   |       |  Servico  |      |   Funcionario   |
 +------------------+            +-------------+       +---------+         +--------------+
