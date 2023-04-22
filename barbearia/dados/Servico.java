@@ -1,11 +1,14 @@
 package dados;
+
+import java.util.Random;
+
 public class Servico {
     private int id;
     private String nome;
     private double preco;
 
-    public Servico(int id, String nome, double preco) {
-        this.id = id;
+    public Servico(String nome, double preco) {
+        this.id = (new Random()).nextInt();
         this.nome = nome;
         this.preco = preco;
     }

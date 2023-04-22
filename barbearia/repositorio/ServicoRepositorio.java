@@ -11,6 +11,10 @@ public class ServicoRepositorio {
         servicos = new ArrayList<>();
     }
 
+    public List<Servico> buscarTodos() {
+        return this.servicos;
+    }
+
     public void adicionarServico(Servico servico) {
         servicos.add(servico);
     }

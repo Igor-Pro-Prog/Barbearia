@@ -44,6 +44,10 @@ public class AgendamentoRepositorio {
         return agendamentosEncontrados;
     }
 
+    public List<Agendamento> buscarTodos() {
+        return agendamentos;
+    }
+
     // outros métodos de busca
 
     public void atualizar(Agendamento agendamento) {

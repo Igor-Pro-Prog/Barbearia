@@ -1,4 +1,7 @@
 package dados;
+
+import java.util.Random;
+
 public class Cliente {
     private int id;
     private String nome;
@@ -6,7 +9,7 @@ public class Cliente {
     private String email;
 
     public Cliente(int id, String nome, String telefone, String email) {
-        this.id = id;
+        this.id = (new Random()).nextInt();
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
