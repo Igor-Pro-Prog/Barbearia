@@ -6,15 +6,15 @@ A Barbearia é uma empresa que presta serviços de beleza, como cortes de cabelo
 
 ## Backlog do projeto:
 
-Funcionalidade: ===================== Responsável:
-Agendar horário ====================>   Maria      
-Cancelar horário ===================>   João        
-Verificar agenda ===================>	  Maria
-Registrar pagamento ================>   Pedro
-Cadastrar cliente	==================>   João 
-Cadastrar funcionário ==============>	  Maria
-Cadastrar serviço	==================>   Pedro
-Verificar histórico de atendimento =>   João
+### Funcionalidade: ===================== Responsável:
+#### Agendar horário ====================>   Maria      
+#### Cancelar horário ===================>   João        
+#### Verificar agenda ===================>	 Maria
+#### Registrar pagamento ================>   Pedro
+#### Cadastrar cliente	==================>  João 
+#### Cadastrar funcionário ==============>	 Maria
+#### Cadastrar serviço	==================>  Pedro
+#### Verificar histórico de atendimento =>   João
 
 
 # Arquitetura do sistema:
