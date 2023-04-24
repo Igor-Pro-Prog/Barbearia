@@ -1,11 +1,11 @@
 # Barbearia
 
 Descrição do sistema:
-A Barbearia é uma empresa que presta serviços de beleza masculina, como cortes de cabelo, barba, bigode, entre outros. O sistema a ser desenvolvido tem como objetivo gerenciar os agendamentos dos clientes, controlar o histórico de atendimentos e pagamentos, além de realizar o cadastro de novos clientes, funcionários e serviços oferecidos pela barbearia. A equipe escolheu este tema porque percebeu uma demanda crescente por serviços de beleza masculina e acredita que a automatização do processo de agendamento e gerenciamento pode contribuir para uma melhor experiência do cliente e aumento da eficiência da empresa. O sistema será utilizado pelos funcionários da barbearia, responsáveis pelo atendimento aos clientes e gerenciamento das informações.
+A Barbearia é uma empresa que presta serviços de beleza, como cortes de cabelo, barba, bigode, entre outros. O sistema a ser desenvolvido tem como objetivo gerenciar os agendamentos dos clientes, controlar o histórico de atendimentos e pagamentos, além de realizar o cadastro de novos clientes, funcionários e serviços oferecidos pela barbearia. A equipe escolheu este tema porque percebeu uma demanda crescente por serviços de beleza e acredita que a automatização do processo de agendamento e gerenciamento pode contribuir para uma melhor experiência do cliente e aumento da eficiência da empresa. O sistema será utilizado pelos funcionários da barbearia, responsáveis pelo atendimento aos clientes e gerenciamento das informações.
 
 
-# Backlog do projeto:
-`
+## Backlog do projeto:
+
 Funcionalidade                     |   Responsável|
 Agendar horário                    |	Maria       |
 Cancelar horário                   |	João        |
@@ -15,11 +15,11 @@ Cadastrar cliente	                 |  João        |
 Cadastrar funcionário              |	Maria       |
 Cadastrar serviço	                 |  Pedro       |
 Verificar histórico de atendimentos|	João        |
-`
 
-#Arquitetura do sistema:
 
-#Diagrama de casos de uso:
+## Arquitetura do sistema:
+
+## Diagrama de casos de uso:
 
              +------------------------------------+
              |           Barbearia                |
@@ -66,9 +66,9 @@ Verificar histórico de atendimentos|	João        |
              +------------------------------------+
 
 
-#Diagrama de classes:
+## Diagrama de classes:
 
-`+------------------+            +-------------+       +---------+         +--------------+
++------------------+            +-------------+       +---------+         +--------------+
 |   Agendamento    |            |   Cliente   |       |  Servico  |      |   Funcionario   |
 +------------------+            +-------------+       +---------+         +--------------+
 | -data: String    |         | -nome: String     |  | -nome: String |   | -nome: String    |
@@ -77,5 +77,3 @@ Verificar histórico de atendimentos|	João        |
 | -funcionario: Funcionario| |                   |  |               |   |                  |
 | -servico: Servico|          +-------------+          +---------+      |                  |
 +------------------+                                                      +--------------+
-
-`
