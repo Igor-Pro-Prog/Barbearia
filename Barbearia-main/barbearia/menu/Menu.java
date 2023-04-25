@@ -30,8 +30,6 @@ class Menu {
 
     private static Funcionario[] funcionarios;
 
-    private static double preco;
-
     public static void main(String[] args) {
         try (Scanner entrada = new Scanner(System.in)) {
 			int opcao = 0;
@@ -108,24 +106,33 @@ class Menu {
         System.out.println("Cadastro de cliente");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
+        System.out.print("E-mail: ");
+        String email = scanner.nextLine();
         System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
-        Cliente cliente = new Cliente((new Random()).nextInt(), nome, cpf, telefone);
+        // guarda os dados do cliente em um objeto da classe Cliente
+        Cliente cliente = new Cliente(nome, email, telefone);
+        // adiciona o cliente ao repositório
         clienteRepositorio.adicionarCliente(cliente);
         System.out.println("Cliente cadastrado com sucesso!");
+
     }
      
     public static void listarClientes() {
         System.out.println("--- Lista de Clientes ---");
-        for (Cliente cliente : clientes) {
-            System.out.println("Nome: " + cliente.getNome());
-            System.out.println("Telefone: " + cliente.getTelefone());
-            System.out.println("Email: " + cliente.getEmail());
-            System.out.println("------------------------");
+        // verifica se há clientes cadastrados
+        if (clienteRepositorio.buscarTodos().length == 0) {
+            System.out.println("Não há clientes cadastrados!");
+        } else {
+            for (Cliente cliente : clienteRepositorio.buscarTodos()) {
+                System.out.println("Nome: " + cliente.getNome());
+                System.out.println("E-mail: " + cliente.getEmail());
+                System.out.println("Telefone: " + cliente.getTelefone());
+                System.out.println();
+            }
         }
     }
+     
     public static void agendarServico() {
         // solicita o nome do cliente e verifica se ele existe
         System.out.print("Digite o nome do cliente: ");

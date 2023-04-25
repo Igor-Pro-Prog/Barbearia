@@ -37,4 +37,21 @@ public class ClienteRepositorio {
         }
         return null;
     }
+
+    public Cliente[] buscarTodos() {
+        return clientes.toArray(new Cliente[0]);
+    }
+
+    public boolean existe(Cliente cliente) {
+        return clientes.contains(cliente);
+    }
+
+    public boolean existe(int id) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

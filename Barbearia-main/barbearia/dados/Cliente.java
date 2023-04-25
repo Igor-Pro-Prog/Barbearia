@@ -7,20 +7,32 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String email;
+    private int cpf;
 
-    public Cliente(int id, String nome, String telefone, String email) {
+    public Cliente(String nome, String telefone, String email) {
         this.id = (new Random()).nextInt();
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
     }
 
+    public Cliente(String nome2, String cpf2, String telefone2, String email2) {
+    }
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+    
+    public int getCpf() {
+        return cpf;   
     }
 
     public String getNome() {
@@ -57,5 +69,9 @@ public class Cliente {
         }
         Cliente outro = (Cliente) obj;
         return this.id == outro.id;
+    }
+    
+    public String getTodos() {
+        return null;
     }
 }
