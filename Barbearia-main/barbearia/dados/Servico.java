@@ -56,4 +56,28 @@ public class Servico {
     public String getValor() {
         return null;
     }
+
+    public String buscarServico(String nome) {
+        return nome;
+    }
+
+    public String getBuscarServico(String nome) {
+        return nome;
+    }
+
+    public String buscarServico(int id) {
+        return null;
+    }
+
+    public String getBuscarServico(int id) {
+        return null;
+    }
+
+    public String buscarServico(double preco) {
+        return null;
+    }
+    
+
+
+    
 }

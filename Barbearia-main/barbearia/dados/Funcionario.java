@@ -67,4 +67,16 @@ public class Funcionario {
         Funcionario outro = (Funcionario) obj;
         return this.id == outro.id;
     }
+
+    public String getEmail() {
+        return null;
+    }
+
+    public String getEndereco() {
+        return null;
+    }
+
+    public String getTodos() {
+        return null;
+    }
 }

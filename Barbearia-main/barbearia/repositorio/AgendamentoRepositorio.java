@@ -63,5 +63,8 @@ public class AgendamentoRepositorio {
         agendamentos.remove(agendamento);
     }
 
+    public void adicionarAgendamento(Agendamento agendamento) {
+    }
+
     // outros métodos de CRUD
 }

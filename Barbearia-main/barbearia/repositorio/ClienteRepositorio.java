@@ -54,4 +54,8 @@ public class ClienteRepositorio {
         }
         return false;
     }
+
+    public Cliente buscarClientePorNome(String nomeCliente) {
+        return null;
+    }
 }

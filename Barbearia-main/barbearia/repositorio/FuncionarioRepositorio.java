@@ -36,4 +36,16 @@ public class FuncionarioRepositorio {
         }
         return null;
     }
+
+    public List<Funcionario> buscarTodos() {
+        return funcionarios;
+    }
+
+    public boolean existe(Funcionario funcionario) {
+        return funcionarios.contains(funcionario);
+    }
+
+    public Funcionario buscarFuncionarioPorNome(String nomeFuncionario) {
+        return null;
+    }
 }

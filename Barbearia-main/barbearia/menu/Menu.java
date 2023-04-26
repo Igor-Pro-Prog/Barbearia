@@ -1,8 +1,9 @@
 package menu;
 
 import java.util.Scanner;
-import java.util.Date;
-import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import repositorio.AgendamentoRepositorio;
 import repositorio.ClienteRepositorio;
@@ -23,12 +24,6 @@ class Menu {
     private static  FuncionarioRepositorio funcionarioRepositorio = new FuncionarioRepositorio();
     private static  ServicoRepositorio servicoRepositorio = new ServicoRepositorio();
     private static  AgendamentoRepositorio agendamentoRepositorio = new AgendamentoRepositorio();
-
-    private static  Cliente[] clientes;
-
-    private static  Scanner input;
-
-    private static Funcionario[] funcionarios;
 
     public static void main(String[] args) {
         try (Scanner entrada = new Scanner(System.in)) {
@@ -134,52 +129,61 @@ class Menu {
     }
      
     public static void agendarServico() {
-        // solicita o nome do cliente e verifica se ele existe
-        System.out.print("Digite o nome do cliente: ");
-        String nomeCliente = input.next();
-        Cliente cliente = buscarCliente(nomeCliente);
+        System.out.println("Agendamento de serviço");
+        System.out.print("Nome do cliente: ");
+        String nomeCliente = scanner.nextLine();
+        // verifica se existe um cliente com o nome informado no repositório
+        Cliente cliente = clienteRepositorio.buscarClientePorNome(nomeCliente);
+    
         if (cliente == null) {
             System.out.println("Cliente não encontrado!");
             return;
         }
-        
-        // solicita o nome do serviço e verifica se ele existe
-        System.out.print("Digite o nome do serviço: ");
-        String nomeServico = input.next();
-        Servico servico = agendarServico(nomeServico);
-        if (servico == null) {
-            System.out.println("Serviço não encontrado!");
-            return;
-        }
-        
-        // solicita o nome do funcionário e verifica se ele existe
-        System.out.print("Digite o nome do funcionário: ");
-        String nomeFuncionario = input.next();
-        Funcionario funcionario = buscarFuncionario(nomeFuncionario);
+    
+        System.out.print("Nome do funcionário: ");
+        String nomeFuncionario = scanner.nextLine();
+        Funcionario funcionario = funcionarioRepositorio.buscarFuncionarioPorNome(nomeFuncionario);
+    
         if (funcionario == null) {
             System.out.println("Funcionário não encontrado!");
             return;
         }
-        
-        // solicita a data e hora do serviço
-        System.out.print("Digite a data do serviço (dd/mm/aaaa): ");
-        Date data = new Date(input.next());
-        System.out.print("Digite a hora do serviço (hh:mm): ");
-        String hora = input.next();
-
-        Agendamento agendamento = new Agendamento(data, hora, cliente, funcionario, servico );
-        agendamentoRepositorio.adicionar(agendamento);
-        System.out.println("Agendamento realizado com sucesso!");
+    
+        System.out.print("Nome do serviço: ");
+        String nomeServico = scanner.nextLine();
+        Servico servico = servicoRepositorio.buscarServicoPorNome(nomeServico);
+    
+        if (servico == null) {
+            System.out.println("Serviço não encontrado!");
+            return;
+        }
+    
+        System.out.print("Data do agendamento (dd/mm/aaaa): ");
+        String data = scanner.nextLine();
+        System.out.print("Horário do agendamento (hh:mm): ");
+        String horario = scanner.nextLine();
+    
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDateTime dataHora = LocalDateTime.parse(data + " " + horario, formatter);
+            Agendamento agendamento = new Agendamento(cliente, funcionario, servico, dataHora);
+            agendamentoRepositorio.adicionarAgendamento(agendamento);
+            System.out.println("Agendamento cadastrado com sucesso!");
+        } catch (DateTimeParseException e) {
+            System.out.println("Data ou horário inválidos!");
+        }
     }
-
-    private static Servico agendarServico(String nomeServico) {
+    
+    
+    private static Cliente getNomeCliente(String nomeCliente) {
         return null;
     }
 
-    private static Cliente buscarCliente(String nomeCliente) {
+
+    private static Servico getServico(String nomeServico) {
         return null;
     }
-
+    
     private static Funcionario buscarFuncionario(String nomeFuncionario) {
         return null;
     }
@@ -202,16 +206,21 @@ class Menu {
         Funcionario funcionario = new Funcionario(0, nome, cpf, telefone, 0);
         funcionarioRepositorio.adicionarFuncionario(funcionario);
         System.out.println("Funcionário cadastrado com sucesso!");
+        System.out.println();
+        
     }
     
     public static void listarFuncionarios() {
-        System.out.println("--- Lista de Funcionários ---");
-        for (Funcionario funcionario : funcionarios) {
-            System.out.println("Nome: " + funcionario.getNome());
-            System.out.println("Telefone: " + funcionario.getTelefone());
-            // System.out.println("Email: " + funcionario.getEmail());
-            // System.out.println("Endereço: " + funcionario.getEndereco());
-            System.out.println("------------------------");
+        // verifica se há funcionários cadastrados se não houver exibe uma mensagem se houver exibe a lista de funcionários
+        if (funcionarioRepositorio.buscarTodos().isEmpty()) {
+            System.out.println("Não há funcionários cadastrados!");
+        } else {
+            for (Funcionario funcionario : funcionarioRepositorio.buscarTodos()) {
+                System.out.println("Nome: " + funcionario.getNome());
+                System.out.println("CPF: " + funcionario.getCpf());
+                System.out.println("Telefone: " + funcionario.getTelefone());
+                System.out.println();
+            }
         }
     }
 }

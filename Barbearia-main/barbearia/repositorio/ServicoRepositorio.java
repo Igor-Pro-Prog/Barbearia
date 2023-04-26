@@ -41,4 +41,12 @@ public class ServicoRepositorio {
         }
         return null;
     }
+
+    public static Servico buscarServico(String nomeServico) {
+        return null;
+    }
+
+    public Servico buscarServicoPorNome(String nomeServico) {
+        return null;
+    }
 }

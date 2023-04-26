@@ -1,4 +1,5 @@
 package dados;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Agendamento {
@@ -9,13 +10,23 @@ public class Agendamento {
     private Servico servico;
     private boolean realizado;
 
-    public Agendamento(Date data, String horario, Cliente cliente, Funcionario funcionario, Servico servico) {
-        this.data = data;
-        this.horario = horario;
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.servico = servico;
+    public Agendamento(Date i, String cliente2, Cliente funcionario2, Funcionario servico2, Servico dateTime) {
+        this.data = i;
+        this.horario = cliente2;
+        this.cliente = funcionario2;
+        this.funcionario = servico2;
+        this.servico = dateTime;
         this.realizado = false;
+    }
+
+    public Agendamento(Servico servico2, Cliente cliente2, Funcionario funcionario2, LocalDateTime dataHora) {
+    }
+
+    public Agendamento(int nextInt, Cliente cliente2, Funcionario funcionario2, Servico servico2,
+            LocalDateTime dateTime) {
+    }
+
+    public Agendamento(Cliente cliente2, Funcionario funcionario2, Servico servico2, LocalDateTime dataHora) {
     }
 
     public Date getData() {
