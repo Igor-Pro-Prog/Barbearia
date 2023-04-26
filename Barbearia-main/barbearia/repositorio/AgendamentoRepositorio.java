@@ -1,4 +1,5 @@
 package repositorio;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,5 +67,15 @@ public class AgendamentoRepositorio {
     public void adicionarAgendamento(Agendamento agendamento) {
     }
 
-    // outros métodos de CRUD
+    public List<Agendamento> buscarAgendamentosPorData(List<Agendamento> agendamentos, LocalDate data) {
+        List<Agendamento> agendamentosNaData = new ArrayList<>();
+        for (Agendamento agendamento : agendamentos) {
+            if (agendamento.getData().equals(data)) {
+                agendamentosNaData.add(agendamento);
+            }
+        }
+        return agendamentosNaData;
+    }
+    
+    
 }

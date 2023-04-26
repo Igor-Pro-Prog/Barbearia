@@ -46,7 +46,7 @@ public class ClienteRepositorio {
         return clientes.contains(cliente);
     }
 
-    public boolean existe(int id) {
+    public boolean existeNome(int id) {
         for (Cliente cliente : clientes) {
             if (cliente.getId() == id) {
                 return true;
@@ -56,6 +56,10 @@ public class ClienteRepositorio {
     }
 
     public Cliente buscarClientePorNome(String nomeCliente) {
+        return clientes.stream().filter(cliente -> cliente.getNome().equals(nomeCliente)).findFirst().orElse(null);
+    }
+
+    public Cliente existeNome(String nomeCliente) {
         return null;
     }
 }

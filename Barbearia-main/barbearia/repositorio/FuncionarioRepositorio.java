@@ -46,6 +46,6 @@ public class FuncionarioRepositorio {
     }
 
     public Funcionario buscarFuncionarioPorNome(String nomeFuncionario) {
-        return null;
+        return funcionarios.stream().filter(funcionario -> funcionario.getNome().equals(nomeFuncionario)).findFirst().orElse(null);
     }
 }

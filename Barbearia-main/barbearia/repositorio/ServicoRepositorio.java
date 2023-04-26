@@ -15,6 +15,28 @@ public class ServicoRepositorio {
         return this.servicos;
     }
 
+    public boolean existe(Servico servico) {
+        return servicos.contains(servico);
+    }
+
+    public boolean existe(int id) {
+        for (Servico servico : servicos) {
+            if (servico.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existeNome(String nomeServico) {
+        for (Servico servico : servicos) {
+            if (servico.getNome().equals(nomeServico)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void adicionarServico(Servico servico) {
         servicos.add(servico);
     }
@@ -47,6 +69,6 @@ public class ServicoRepositorio {
     }
 
     public Servico buscarServicoPorNome(String nomeServico) {
-        return null;
+        return servicos.stream().filter(servico -> servico.getNome().equals(nomeServico)).findFirst().orElse(null);
     }
 }

@@ -90,4 +90,8 @@ public class Agendamento {
                 && this.cliente.equals(outro.cliente) && this.funcionario.equals(outro.funcionario)
                 && this.servico.equals(outro.servico);
     }
+
+    public LocalDateTime getDataHora() {
+        return null;
+    }
 }
