@@ -1,25 +1,24 @@
 package dados;
 
-import java.util.Random;
-
 public class Servico {
-    private int id;
     private String nome;
     private double preco;
+    private int duracao;
 
+    //int duracao
     public Servico(String nome, double preco) {
-        this.id = (new Random()).nextInt();
         this.nome = nome;
         this.preco = preco;
+        //this.duracao = duracao;
     }
+    
+    public int getDuracao() {
+		return duracao;
+	}
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setDuracao(int duracao) {
+		this.duracao = duracao;
+	}
 
     public String getNome() {
         return nome;
@@ -37,26 +36,6 @@ public class Servico {
         this.preco = preco;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Servico)) {
-            return false;
-        }
-        Servico outro = (Servico) obj;
-        return this.id == outro.id;
-    }
-
-    public String valor() {
-        return null;
-    }
-
-    public String getValor() {
-        return null;
-    }
-
     public String buscarServico(String nome) {
         return nome;
     }
@@ -64,20 +43,4 @@ public class Servico {
     public String getBuscarServico(String nome) {
         return nome;
     }
-
-    public String buscarServico(int id) {
-        return null;
-    }
-
-    public String getBuscarServico(int id) {
-        return null;
-    }
-
-    public String buscarServico(double preco) {
-        return null;
-    }
-    
-
-
-    
 }
