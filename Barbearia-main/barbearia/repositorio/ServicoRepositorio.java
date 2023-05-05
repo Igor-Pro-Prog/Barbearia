@@ -19,15 +19,6 @@ public class ServicoRepositorio {
         return servicos.contains(servico);
     }
 
-    public boolean existe(int id) {
-        for (Servico servico : servicos) {
-            if (servico.getId() == id) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean existeNome(String nomeServico) {
         for (Servico servico : servicos) {
             if (servico.getNome().equals(nomeServico)) {
@@ -41,31 +32,8 @@ public class ServicoRepositorio {
         servicos.add(servico);
     }
 
-    public boolean removerServico(int id) {
-        for (Servico servico : servicos) {
-            if (servico.getId() == id) {
-                servicos.remove(servico);
-                return true;
-            }
-        }
-        return false;
-    }
-
     public List<Servico> listarServicos() {
         return servicos;
-    }
-
-    public Servico buscarServico(int id) {
-        for (Servico servico : servicos) {
-            if (servico.getId() == id) {
-                return servico;
-            }
-        }
-        return null;
-    }
-
-    public static Servico buscarServico(String nomeServico) {
-        return null;
     }
 
     public Servico buscarServicoPorNome(String nomeServico) {
