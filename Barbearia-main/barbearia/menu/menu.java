@@ -1,4 +1,3 @@
-
 package menu;
 
 import java.util.List;
@@ -29,6 +28,7 @@ class menu {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean sair = false;
         int opcao = 0;
         // coloca na cor vermelha
         System.out.println("\033[0;31mBem-vindo ao sistema de agendamento de serviços da Barbearia!\033[0m");
@@ -37,11 +37,11 @@ class menu {
         
         if (tipoUsuario == 1) {
             System.out.println("Para agendar um serviço, é necessário estar cadastrado como cliente.");
-            System.out.println("Deseja se cadastrar como cliente? (1 - sim / 2 - não)");
+            System.out.println("Você é um cliente cadastrado? (1 - sim / qualquer outro número - não)");
             int cadastrarCliente = scanner.nextInt();
             
             if (cadastrarCliente == 1) {
-                // cria um menu para cadastrar cliente agendar serviço listar serviços
+                // cria um menu de cliente cadastrado,onde cliente pode agendar serviço ou ver a lista de serviços 
                 do {
                     System.out.println("Selecione uma opção:");
                     System.out.println("1 - Agendar serviço");
@@ -60,15 +60,16 @@ class menu {
                         case 3:
                             // coloca na cor verde
                             System.out.println("\033[0;32mObrigado por utilizar nosso sistema de barbearia. Até mais!\033[0m");
+                            sair = true;
                             break;
                         default:
                             // coloca na cor amarela
                             System.out.println("\033[0;33mOpção inválida. Tente novamente.\033[0m");
                             break;
                     }
-                } while (opcao != 4);
+                } while (!sair);
             } else {
-                // se escolher não entra em cadastramento de cliente para se cadastrar
+                // se escolher não, entra em cadastramento de cliente para se cadastrar
                 cadastrarCliente();
                 // mostra as opções disponiveis para o cliente
                 do {
@@ -87,15 +88,16 @@ class menu {
                             listarServicos();
                             break;
                         case 3:
-                        // coloca na cor verde
+                            // coloca na cor verde
                             System.out.println("\033[0;32mObrigado por utilizar nosso sistema de barbearia. Até mais!\033[0m");
+                            sair = true;
                             break;
                         default:
-                        // coloca na cor amarela
+                            // coloca na cor amarela
                             System.out.println("\033[0;33mOpção inválida. Tente novamente.\033[0m");
                             break;
                     }
-                } while (opcao != 3);
+                } while (!sair);
             }
         } else if (tipoUsuario == 2) {
             do {
@@ -116,28 +118,32 @@ class menu {
                 
                 switch (opcao) {
                     case 0:
-                    System.out.println("Selecione uma opção:");
-                    System.out.println("1 - Agendar serviço");
-                    System.out.println("2 - Listar serviços");
-                    System.out.println("3 - Sair");
-                    
-                    opcao = scanner.nextInt();
-                    
-                    switch (opcao) {
-                        case 1:
-                            agendarServico();
-                            break;
-                        case 2:
-                            listarServicos();
-                            break;
-                        case 3:
-                        // coloca na cor verde
-                            System.out.println("\033[0;32mObrigado por utilizar nosso sistema de barbearia. Até mais!\033[0m");
-                            break;
-                        default:
-                            System.out.println("Opção inválida. Tente novamente.");
-                            break;
-                    }
+                    	do {
+                            System.out.println("Selecione uma opção:");
+                            System.out.println("1 - Agendar serviço");
+                            System.out.println("2 - Listar serviços");
+                            System.out.println("3 - Sair");
+                            
+                            opcao = scanner.nextInt();
+                            
+                            switch (opcao) {
+                                case 1:
+                                    agendarServico();
+                                    break;
+                                case 2:
+                                    listarServicos();
+                                    break;
+                                case 3:
+                                    // coloca na cor verde
+                                    System.out.println("\033[0;32mObrigado por utilizar nosso sistema de barbearia. Até mais!\033[0m");
+                                    sair = true;
+                                    break;
+                                default:
+                                    // coloca na cor amarela
+                                    System.out.println("\033[0;33mOpção inválida. Tente novamente.\033[0m");
+                                    break;
+                            }
+                        } while (!sair);
                         break;
                     case 1:
                         cadastrarServico();
@@ -166,16 +172,17 @@ class menu {
                     case 9:
                     // coloca na cor verde
                         System.out.println("\033[0;32mObrigado por utilizar nosso sistema de barbearia. Até mais!\033[0m");
+                        sair = true;
                         break;
                     default:
                     // coloca na cor amarela
                         System.out.println("\033[0;33mOpção inválida. Tente novamente.\033[0m");
                         break;
                 }
-            } while (opcao != 9);
+            } while (!sair);
         } else {
             // coloca na cor amarela
-            System.out.println("\033[0;33mOpção inválida. Tente novamente.\033[0m");
+            System.out.println("\033[0;33mOpção inválida, encerrando programa...\033[0m");
         }
         
         scanner.close();
@@ -194,7 +201,7 @@ class menu {
     }
     
     public static void listarServicos() {
-        System.out.println("Lista de serviços");
+        System.out.println("Lista de serviços:");
         for (Servico servico : servicoRepositorio.buscarTodos()) {
             System.out.println("Nome: " + servico.getNome());
             System.out.println("Valor: " + servico.getPreco());
