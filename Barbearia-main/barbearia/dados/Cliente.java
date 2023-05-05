@@ -1,30 +1,14 @@
 package dados;
 
-import java.util.Random;
-
 public class Cliente {
-    private int id;
     private String nome;
     private String telefone;
-    private String email;
     private int cpf;
-
-    public Cliente(String nome, String telefone, String email) {
-        this.id = (new Random()).nextInt();
+    
+    public Cliente(String nome, String telefone, int cpf) {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
-    }
-
-    public Cliente(String nome2, String cpf2, String telefone2, String email2) {
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.cpf = cpf;
     }
     
     public void setCpf(int cpf) {
@@ -49,29 +33,5 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Cliente)) {
-            return false;
-        }
-        Cliente outro = (Cliente) obj;
-        return this.id == outro.id;
-    }
-    
-    public String getTodos() {
-        return null;
     }
 }
