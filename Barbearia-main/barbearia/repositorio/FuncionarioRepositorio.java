@@ -14,27 +14,8 @@ public class FuncionarioRepositorio {
         funcionarios.add(funcionario);
     }
 
-    public boolean removerFuncionario(int id) {
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getId() == id) {
-                funcionarios.remove(funcionario);
-                return true;
-            }
-        }
-        return false;
-    }
-
     public List<Funcionario> listarFuncionarios() {
         return funcionarios;
-    }
-
-    public Funcionario buscarFuncionario(int id) {
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getId() == id) {
-                return funcionario;
-            }
-        }
-        return null;
     }
 
     public List<Funcionario> buscarTodos() {
@@ -44,7 +25,6 @@ public class FuncionarioRepositorio {
     public boolean existe(Funcionario funcionario) {
         return funcionarios.contains(funcionario);
     }
-
     public Funcionario buscarFuncionarioPorNome(String nomeFuncionario) {
         return funcionarios.stream().filter(funcionario -> funcionario.getNome().equals(nomeFuncionario)).findFirst().orElse(null);
     }
