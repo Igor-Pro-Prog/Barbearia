@@ -68,12 +68,12 @@ A Barbearia é uma empresa que presta serviços de beleza, como cortes de cabelo
 
 ## Diagrama de classes:
 
-         +------------------+            +-------------+       +---------+         +--------------+
-        |   Agendamento    |            |   Cliente   |       |  Servico  |      |   Funcionario   |
-        +------------------+            +-------------+       +---------+         +--------------+
-        | -data: String    |         | -nome: String     |  | -nome: String |   | -nome: String    |
-        | -hora: String    |         | -telefone: String |  | -preco: float |   | -telefone: String|
-        | -cliente: Cliente|         | -endereco: String |  | -duracao: int |   | -endereco: String|
-        | -funcionario: Funcionario| |                   |  |               |   |                  |
-        | -servico: Servico|          +-------------+          +---------+      |                  |
-        +------------------+                                                      +--------------+
+        +--------------------------+         +-------------------+       +---------------+      +------------------+
+        |   Agendamento            |         |   Cliente         |       | Servico       |      |  Funcionario     |
+        +--------------------------+         +-------------------+       +---------------+      +------------------+
+        | -data: String            |         | -nome: String     |       | -nome: String |      | -nome: String    |
+        | -hora: String            |         | -telefone: String |       | -preco: double|      | -telefone: String|
+        | -cliente: Cliente        |         | -CPF: int         |       | -duracao: int |      | -cpf: int        |
+        | -funcionario: Funcionario|         |                   |       |               |      |                  |
+        | -servico: Servico        |         |                   |       |               |      |                  |
+        +--------------------------+         +-------------------+       +---------------+      +------------------+
